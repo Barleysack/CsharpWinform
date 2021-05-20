@@ -72,14 +72,37 @@ namespace Day16_ApplicationDev
 
 
             // 2. 이전 비밀번호 일치 확인
-            if (DtTemp.Rows[0]["PW"].ToString() != sPerPw)//row는 이름을 때릴 수 있다네?
+            else if (DtTemp.Rows[0]["PW"].ToString() != sPerPw)//row는 이름을 때릴 수 있다네?
             {
                 MessageBox.Show("이전 비밀번호가 일치하지 않습니다. ");
                 return;
 
             }
+
+
             // 3. 바뀔 비밀번호로 등록
-            // 4. 변경여부 메시지 처리
+            else
+            {
+
+
+                if (MessageBox.Show("해당 비밀번호로 변경하시겠습니까?", "비밀번호변경",
+                    MessageBoxButtons.YesNo) == DialogResult.No) //NO 누르면 RETURN으로 나가버릴테야 이 코드블럭을;;
+                {
+                    return;
+                }
+                Tran = Connect.BeginTransaction("트랜잭션 시작");//트랜잭션 선언
+                cmd.Transaction = Tran;//트랜잭션 사용 여부 커맨드에 등록
+                cmd.Connection = Connect;// 커맨드에 접속 정보 입력
+                cmd.CommandText = "UPDATE TB_USER_KBS SET PW = '" + sNewPw + "'";
+                cmd.ExecuteNonQuery();//C,R, U,D 실행함수 실행 (CREATE,READ,UPDATE,DELETE)
+                Tran.Commit();//변경 내용 승인 
+                // 4. 변경여부 메시지 처리
+                
+                MessageBox.Show("정상적으로 변경하였습니다.");
+                this.Close();
+
+            }
+            
 
 
         }
