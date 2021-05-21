@@ -1,5 +1,5 @@
 ﻿
-namespace Day16_ApplicationDev
+namespace ApplicationDev
 {
     partial class FM_password
     {
