@@ -46,6 +46,8 @@ namespace ApplicationDev
             this.tsdatenow = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.MDI_TEST = new System.Windows.Forms.ToolStripMenuItem();
+            this.MDI_TEST1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TESTYME = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.Toolstrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -63,6 +65,9 @@ namespace ApplicationDev
             // 
             // M_SYSTEM
             // 
+            this.M_SYSTEM.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MDI_TEST1,
+            this.TESTYME});
             this.M_SYSTEM.Name = "M_SYSTEM";
             this.M_SYSTEM.Size = new System.Drawing.Size(104, 24);
             this.M_SYSTEM.Text = "시스템_관리";
@@ -205,6 +210,18 @@ namespace ApplicationDev
             this.MDI_TEST.Size = new System.Drawing.Size(172, 26);
             this.MDI_TEST.Text = "테스트 화면";
             // 
+            // MDI_TEST1
+            // 
+            this.MDI_TEST1.Name = "MDI_TEST1";
+            this.MDI_TEST1.Size = new System.Drawing.Size(228, 26);
+            this.MDI_TEST1.Text = "toolStripMenuItem1";
+            // 
+            // TESTYME
+            // 
+            this.TESTYME.Name = "TESTYME";
+            this.TESTYME.Size = new System.Drawing.Size(32, 19);
+            this.TESTYME.Text = "toolStripMenuItem2";
+            // 
             // Fm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -248,5 +265,7 @@ namespace ApplicationDev
         private System.Windows.Forms.ToolStripStatusLabel tsdatenow;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.ToolStripMenuItem MDI_TEST;
+        private System.Windows.Forms.ToolStripMenuItem MDI_TEST1;
+        private System.Windows.Forms.ToolStripMenuItem TESTYME;
     }
 }

@@ -54,12 +54,12 @@ namespace ApplicationDev
             Assembly assemb = Assembly.LoadFrom(Application.StartupPath + @"\" + "DEV_Form.DLL");
             //DLL파일의 위치 .
             Type typeform = assemb.GetType("DEV_Form." + e.ClickedItem.Name.ToString(), true);
-            /*MDI_TEST라는 이름을 가져와라, DEV_fORM.뭐시기~를 통으로 가져오라는 느낌.*/
-            Form MDI_TEST = (Form)Activator.CreateInstance(typeform);
+            //당신이 선택한 아이템의 이름을 가져와라, DEV_fORM.선택한이름의 폼~를 통으로 가져오라는 느낌.*/
+            Form show_form = (Form)Activator.CreateInstance(typeform);
             //TYPEFORM에서 가져온 이름과 같은 폼을 DEV_FORM.DLL에서 호출(인스턴스 생성)하라.
 
-            MDI_TEST.MdiParent = this;
-            MDI_TEST.Show();
+            show_form.MdiParent = this;
+            show_form.Show();
 
         }
 

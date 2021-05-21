@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace DEV_Form
 {
-    public partial class TESTY2MDI : Form
+    public partial class TESTYME : Form
     {
-        public TESTY2MDI()
+        public TESTYME()
         {
             InitializeComponent();
         }

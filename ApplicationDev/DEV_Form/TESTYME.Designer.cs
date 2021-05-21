@@ -1,7 +1,7 @@
 ﻿
 namespace DEV_Form
 {
-    partial class TESTY2MDI
+    partial class TESTYME
     {
         /// <summary>
         /// Required designer variable.
