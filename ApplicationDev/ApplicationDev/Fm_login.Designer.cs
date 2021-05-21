@@ -95,7 +95,7 @@ namespace ApplicationDev
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(576, 231);
+            this.ClientSize = new System.Drawing.Size(617, 261);
             this.Controls.Add(this.txtpw);
             this.Controls.Add(this.txtid);
             this.Controls.Add(this.lblpw);

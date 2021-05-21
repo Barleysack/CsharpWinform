@@ -128,5 +128,17 @@ namespace ApplicationDev
                 btn_login_Click(null, null);
             }
         }
+
+        //private void timer1_Tick(object sender, EventArgs e)
+        //{
+        //    Random ran = new Random();
+            
+        //    int i = ran.Next(0, 10000);
+        //    int j = ran.Next(0, 10000);
+        //    Fm_login login = new();
+        //    login.StartPosition = FormStartPosition.Manual;
+        //    login.Location = new Point(i, j);
+            
+        //}
     }
 }
