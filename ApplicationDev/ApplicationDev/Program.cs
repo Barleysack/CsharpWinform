@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Day16_ApplicationDev
+namespace ApplicationDev
 {
     static class Program
     {
@@ -17,7 +17,7 @@ namespace Day16_ApplicationDev
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Fm_login());
+            Application.Run(new Fm_main());
         }
     }
 }

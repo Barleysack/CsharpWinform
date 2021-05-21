@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-namespace Day16_ApplicationDev
+namespace ApplicationDev
 {
     public partial class Fm_login : Form
     {
@@ -16,6 +16,7 @@ namespace Day16_ApplicationDev
         public Fm_login()
         {
             InitializeComponent();
+            this.Tag="FAIL";
         }
 
         private void Btn_pwchange_Click(object sender, EventArgs e)
@@ -54,7 +55,7 @@ namespace Day16_ApplicationDev
 
 
 
-            SqlDataAdapter adapter = new SqlDataAdapter("SELECT PW FROM TB_USER_KBS WHERE " +
+            SqlDataAdapter adapter = new SqlDataAdapter("SELECT PW,USERNAME FROM TB_USER_KBS WHERE " +
                "USERID = '" + sLogid + "'", Connect);
             //데이터를 담을 그릇
             DataTable DtTemp = new DataTable();
@@ -71,7 +72,8 @@ namespace Day16_ApplicationDev
                 if (failcount == 3)
                 {
                     MessageBox.Show("3회 실패!");
-                    this.Close();
+                    Application.Exit();
+                    return;
                 }
 
 
@@ -87,7 +89,8 @@ namespace Day16_ApplicationDev
                 if (failcount == 3)
                 {
                     MessageBox.Show("3회 실패!");
-                    this.Close();
+                    Application.Exit();
+                    return;
                 }
 
 
@@ -99,6 +102,7 @@ namespace Day16_ApplicationDev
                else if ((DtTemp.Rows[0]["PW"].ToString() == sPerPw))
                 {
                     MessageBox.Show("환영합니다!");
+                    this.Tag = DtTemp.Rows[0]["USERNAME"].ToString(); //요건 종료될때까지 살아있나? 아니다.
                     this.Close();
 
                 }
@@ -115,6 +119,14 @@ namespace Day16_ApplicationDev
 
 
 
+        }
+
+        private void txtpw_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btn_login_Click(null, null);
+            }
         }
     }
 }

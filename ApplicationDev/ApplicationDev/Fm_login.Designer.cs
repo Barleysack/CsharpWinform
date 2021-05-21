@@ -1,5 +1,5 @@
 ﻿
-namespace Day16_ApplicationDev
+namespace ApplicationDev
 {
     partial class Fm_login
     {
@@ -89,6 +89,7 @@ namespace Day16_ApplicationDev
             this.txtpw.PasswordChar = '*';
             this.txtpw.Size = new System.Drawing.Size(382, 27);
             this.txtpw.TabIndex = 5;
+            this.txtpw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtpw_KeyDown);
             // 
             // Fm_login
             // 
@@ -102,7 +103,7 @@ namespace Day16_ApplicationDev
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.Btn_pwchange);
             this.Name = "Fm_login";
-            this.Text = "Form1";
+            this.Text = "LOG IN";
             this.ResumeLayout(false);
             this.PerformLayout();
 

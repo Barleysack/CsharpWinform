@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 
 
-namespace Day16_ApplicationDev
+namespace ApplicationDev
 {
     public partial class FM_password : Form
     {   
