@@ -28,7 +28,8 @@ namespace Day16_ApplicationDev
 
             
         }
-
+        public int failcount = 0;
+        
         private void btn_login_Click(object sender, EventArgs e)
         {
             string strCon = "Data Source = 61.105.9.203; " +
@@ -61,40 +62,50 @@ namespace Day16_ApplicationDev
             adapter.Fill(DtTemp);
 
             // 데이터가 없는 경우 사용자가 없다고 메세지 및 리턴
-            for (int i = 0; i < 3; i++)
-            {
+            
 
                 if (DtTemp.Rows.Count == 0)
                 {
                     MessageBox.Show("사용자 정보가 없습니다.");
-                    return;
-                    
-
+                failcount = failcount + 1;
+                if (failcount == 3)
+                {
+                    MessageBox.Show("3회 실패!");
+                    this.Close();
                 }
+
+
+
+            }
 
                 else if (DtTemp.Rows[0]["PW"].ToString() != sPerPw)//row는 이름을 때릴 수 있다네?
                 {
 
                     MessageBox.Show("ID 또는 비밀번호가 일치하지 않습니다.");
-                    return;
 
-                }
-               
-                else if (i == 2)
+                failcount = failcount + 1;
+                if (failcount == 3)
                 {
-                    MessageBox.Show("로그인 3회 실패. 창을 닫습니다.");
+                    MessageBox.Show("3회 실패!");
                     this.Close();
-                    break;
                 }
-            }
 
-            if ((DtTemp.Rows[0]["PW"].ToString() == sPerPw))
-            {
-                MessageBox.Show("환영합니다!");
-                this.Close();
+
+            }
                 
-            }
+           
+               
 
+               else if ((DtTemp.Rows[0]["PW"].ToString() == sPerPw))
+                {
+                    MessageBox.Show("환영합니다!");
+                    this.Close();
+
+                }
+
+
+
+          
 
 
 
