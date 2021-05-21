@@ -93,7 +93,8 @@ namespace Day16_ApplicationDev
                 Tran = Connect.BeginTransaction("트랜잭션 시작");//트랜잭션 선언
                 cmd.Transaction = Tran;//트랜잭션 사용 여부 커맨드에 등록
                 cmd.Connection = Connect;// 커맨드에 접속 정보 입력
-                cmd.CommandText = "UPDATE TB_USER_KBS SET PW = '" + sNewPw + "'";
+                cmd.CommandText = "UPDATE TB_USER_KBS SET PW = '" + sNewPw + "'WHERE USERID= '"+sLogid+"'";
+
                 cmd.ExecuteNonQuery();//C,R, U,D 실행함수 실행 (CREATE,READ,UPDATE,DELETE)
                 Tran.Commit();//변경 내용 승인 
                 // 4. 변경여부 메시지 처리

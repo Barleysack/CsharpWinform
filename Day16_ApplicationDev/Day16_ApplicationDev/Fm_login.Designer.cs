@@ -55,6 +55,7 @@ namespace Day16_ApplicationDev
             this.btn_login.TabIndex = 1;
             this.btn_login.Text = "로그인";
             this.btn_login.UseVisualStyleBackColor = true;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
             // lblid
             // 
@@ -89,7 +90,7 @@ namespace Day16_ApplicationDev
             this.txtpw.Size = new System.Drawing.Size(382, 27);
             this.txtpw.TabIndex = 5;
             // 
-            // Form1
+            // Fm_login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -100,7 +101,7 @@ namespace Day16_ApplicationDev
             this.Controls.Add(this.lblid);
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.Btn_pwchange);
-            this.Name = "Form1";
+            this.Name = "Fm_login";
             this.Text = "Form1";
             this.ResumeLayout(false);
             this.PerformLayout();
