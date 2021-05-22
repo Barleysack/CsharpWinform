@@ -32,7 +32,6 @@ namespace ApplicationDev
             this.components = new System.ComponentModel.Container();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.M_SYSTEM = new System.Windows.Forms.ToolStripMenuItem();
-            this.MDI_TEST = new System.Windows.Forms.ToolStripMenuItem();
             this.Toolstrip = new System.Windows.Forms.ToolStrip();
             this.stbSearch = new System.Windows.Forms.ToolStripButton();
             this.stbInsert = new System.Windows.Forms.ToolStripButton();
@@ -46,6 +45,9 @@ namespace ApplicationDev
             this.tsusername = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsdatenow = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.MDI_TEST = new System.Windows.Forms.ToolStripMenuItem();
+            this.MDI_TEST1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TESTYME = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.Toolstrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -64,16 +66,11 @@ namespace ApplicationDev
             // M_SYSTEM
             // 
             this.M_SYSTEM.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MDI_TEST});
+            this.MDI_TEST1,
+            this.TESTYME});
             this.M_SYSTEM.Name = "M_SYSTEM";
             this.M_SYSTEM.Size = new System.Drawing.Size(104, 24);
             this.M_SYSTEM.Text = "시스템_관리";
-            // 
-            // MDI_TEST
-            // 
-            this.MDI_TEST.Name = "MDI_TEST";
-            this.MDI_TEST.Size = new System.Drawing.Size(172, 26);
-            this.MDI_TEST.Text = "테스트 화면";
             // 
             // Toolstrip
             // 
@@ -207,6 +204,24 @@ namespace ApplicationDev
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // MDI_TEST
+            // 
+            this.MDI_TEST.Name = "MDI_TEST";
+            this.MDI_TEST.Size = new System.Drawing.Size(172, 26);
+            this.MDI_TEST.Text = "테스트 화면";
+            // 
+            // MDI_TEST1
+            // 
+            this.MDI_TEST1.Name = "MDI_TEST1";
+            this.MDI_TEST1.Size = new System.Drawing.Size(228, 26);
+            this.MDI_TEST1.Text = "toolStripMenuItem1";
+            // 
+            // TESTYME
+            // 
+            this.TESTYME.Name = "TESTYME";
+            this.TESTYME.Size = new System.Drawing.Size(32, 19);
+            this.TESTYME.Text = "toolStripMenuItem2";
+            // 
             // Fm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -215,6 +230,7 @@ namespace ApplicationDev
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.Toolstrip);
             this.Controls.Add(this.MenuStrip);
+            this.IsMdiContainer = true;
             this.MainMenuStrip = this.MenuStrip;
             this.Name = "Fm_main";
             this.Text = "Application devy v1.0";
@@ -233,7 +249,6 @@ namespace ApplicationDev
 
         private System.Windows.Forms.MenuStrip MenuStrip;
         private System.Windows.Forms.ToolStripMenuItem M_SYSTEM;
-        private System.Windows.Forms.ToolStripMenuItem MDI_TEST;
         private System.Windows.Forms.ToolStrip Toolstrip;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStripButton stbSearch;
@@ -249,5 +264,8 @@ namespace ApplicationDev
         private System.Windows.Forms.ToolStripStatusLabel tsusername;
         private System.Windows.Forms.ToolStripStatusLabel tsdatenow;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.ToolStripMenuItem MDI_TEST;
+        private System.Windows.Forms.ToolStripMenuItem MDI_TEST1;
+        private System.Windows.Forms.ToolStripMenuItem TESTYME;
     }
 }
