@@ -76,6 +76,22 @@ namespace ApplicationDev
             //show_form.MdiParent = this;
             //show_form.Show();
             mytabcontrol1.AddForm(show_form);
+            //해당되는 폼이 이미 오픈되어 있는지 확인 후 활성화 또는 리턴.
+            for (int i = 0; i < mytabcontrol1.TabPages.Count; i++)
+            {
+                if (mytabcontrol1.TabPages[i].Name == e.ClickedItem.Name.ToString())
+                {
+
+                    mytabcontrol1.TabPages[i].Focus();
+
+                    return;
+
+
+                }
+
+            }
+
+
         }
 
         private void Toolstrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)

@@ -34,6 +34,7 @@ namespace ApplicationDev
             this.M_SYSTEM = new System.Windows.Forms.ToolStripMenuItem();
             this.MDI_TEST1 = new System.Windows.Forms.ToolStripMenuItem();
             this.TESTYME = new System.Windows.Forms.ToolStripMenuItem();
+            this.Fm_item = new System.Windows.Forms.ToolStripMenuItem();
             this.Toolstrip = new System.Windows.Forms.ToolStrip();
             this.stbSearch = new System.Windows.Forms.ToolStripButton();
             this.stbInsert = new System.Windows.Forms.ToolStripButton();
@@ -68,7 +69,8 @@ namespace ApplicationDev
             // 
             this.M_SYSTEM.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MDI_TEST1,
-            this.TESTYME});
+            this.TESTYME,
+            this.Fm_item});
             this.M_SYSTEM.Name = "M_SYSTEM";
             this.M_SYSTEM.Size = new System.Drawing.Size(104, 24);
             this.M_SYSTEM.Text = "시스템_관리";
@@ -76,14 +78,20 @@ namespace ApplicationDev
             // MDI_TEST1
             // 
             this.MDI_TEST1.Name = "MDI_TEST1";
-            this.MDI_TEST1.Size = new System.Drawing.Size(172, 26);
+            this.MDI_TEST1.Size = new System.Drawing.Size(182, 26);
             this.MDI_TEST1.Text = "시험용 화면";
             // 
             // TESTYME
             // 
             this.TESTYME.Name = "TESTYME";
-            this.TESTYME.Size = new System.Drawing.Size(172, 26);
+            this.TESTYME.Size = new System.Drawing.Size(182, 26);
             this.TESTYME.Text = "Testyme";
+            // 
+            // Fm_item
+            // 
+            this.Fm_item.Name = "Fm_item";
+            this.Fm_item.Size = new System.Drawing.Size(182, 26);
+            this.Fm_item.Text = "SearchSearch";
             // 
             // Toolstrip
             // 
@@ -281,5 +289,6 @@ namespace ApplicationDev
         private System.Windows.Forms.ToolStripMenuItem MDI_TEST1;
         private System.Windows.Forms.ToolStripMenuItem TESTYME;
         private mytabcontrol mytabcontrol1;
+        private System.Windows.Forms.ToolStripMenuItem Fm_item;
     }
 }
