@@ -246,6 +246,7 @@ namespace ApplicationDev
             this.MainMenuStrip = this.MenuStrip;
             this.Name = "Fm_main";
             this.Text = "Application devy v1.0";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.Toolstrip.ResumeLayout(false);

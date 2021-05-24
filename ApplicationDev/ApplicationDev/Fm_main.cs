@@ -21,6 +21,7 @@ namespace ApplicationDev
             Fm_login login = new();
             login.ShowDialog();
             this.stbExit.Click += new System.EventHandler(this.stbExit_Click);
+            this.stbClose.Click += new System.EventHandler(this.stbClose_Click);
             this.M_SYSTEM.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.M_SYSTEM_DropDownItemClicked);
             tsusername.Text = login.Tag.ToString();
             //태그값은 스르르 사라집니다 로그인이 끝나면-
@@ -33,11 +34,23 @@ namespace ApplicationDev
 
             }
         }
-        
+
+        private void stbClose_Click(object sender, EventArgs e)
+        {
+            //tab 화면이 열린게 있어야..벨리데이션...!
+            // 열려있는 화면이 있는지 확인
+            if (mytabcontrol1.TabPages.Count == 0) return;
+            //선택된 탭 페이지를 닫는다.
+            mytabcontrol1.SelectedTab.Dispose();
+            
+        }
+
         private void stbExit_Click(object sender, EventArgs e)
         {
             Close();
         }
+
+        
 
         private void timer1_Tick(object sender, EventArgs e)
         {
