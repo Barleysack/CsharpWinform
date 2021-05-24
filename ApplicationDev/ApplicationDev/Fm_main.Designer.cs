@@ -32,6 +32,9 @@ namespace ApplicationDev
             this.components = new System.ComponentModel.Container();
             this.MenuStrip = new System.Windows.Forms.MenuStrip();
             this.M_SYSTEM = new System.Windows.Forms.ToolStripMenuItem();
+            this.MDI_TEST1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.TESTYME = new System.Windows.Forms.ToolStripMenuItem();
+            this.Fm_item = new System.Windows.Forms.ToolStripMenuItem();
             this.Toolstrip = new System.Windows.Forms.ToolStrip();
             this.stbSearch = new System.Windows.Forms.ToolStripButton();
             this.stbInsert = new System.Windows.Forms.ToolStripButton();
@@ -46,8 +49,7 @@ namespace ApplicationDev
             this.tsdatenow = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.MDI_TEST = new System.Windows.Forms.ToolStripMenuItem();
-            this.MDI_TEST1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.TESTYME = new System.Windows.Forms.ToolStripMenuItem();
+            this.mytabcontrol1 = new ApplicationDev.mytabcontrol();
             this.MenuStrip.SuspendLayout();
             this.Toolstrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -67,10 +69,29 @@ namespace ApplicationDev
             // 
             this.M_SYSTEM.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MDI_TEST1,
-            this.TESTYME});
+            this.TESTYME,
+            this.Fm_item});
             this.M_SYSTEM.Name = "M_SYSTEM";
             this.M_SYSTEM.Size = new System.Drawing.Size(104, 24);
             this.M_SYSTEM.Text = "시스템_관리";
+            // 
+            // MDI_TEST1
+            // 
+            this.MDI_TEST1.Name = "MDI_TEST1";
+            this.MDI_TEST1.Size = new System.Drawing.Size(182, 26);
+            this.MDI_TEST1.Text = "시험용 화면";
+            // 
+            // TESTYME
+            // 
+            this.TESTYME.Name = "TESTYME";
+            this.TESTYME.Size = new System.Drawing.Size(182, 26);
+            this.TESTYME.Text = "Testyme";
+            // 
+            // Fm_item
+            // 
+            this.Fm_item.Name = "Fm_item";
+            this.Fm_item.Size = new System.Drawing.Size(182, 26);
+            this.Fm_item.Text = "SearchSearch";
             // 
             // Toolstrip
             // 
@@ -89,6 +110,7 @@ namespace ApplicationDev
             this.Toolstrip.Size = new System.Drawing.Size(817, 86);
             this.Toolstrip.TabIndex = 1;
             this.Toolstrip.Text = "toolStrip1";
+            this.Toolstrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.Toolstrip_ItemClicked);
             // 
             // stbSearch
             // 
@@ -210,23 +232,21 @@ namespace ApplicationDev
             this.MDI_TEST.Size = new System.Drawing.Size(172, 26);
             this.MDI_TEST.Text = "테스트 화면";
             // 
-            // MDI_TEST1
+            // mytabcontrol1
             // 
-            this.MDI_TEST1.Name = "MDI_TEST1";
-            this.MDI_TEST1.Size = new System.Drawing.Size(228, 26);
-            this.MDI_TEST1.Text = "toolStripMenuItem1";
-            // 
-            // TESTYME
-            // 
-            this.TESTYME.Name = "TESTYME";
-            this.TESTYME.Size = new System.Drawing.Size(32, 19);
-            this.TESTYME.Text = "toolStripMenuItem2";
+            this.mytabcontrol1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mytabcontrol1.Location = new System.Drawing.Point(0, 114);
+            this.mytabcontrol1.Name = "mytabcontrol1";
+            this.mytabcontrol1.SelectedIndex = 0;
+            this.mytabcontrol1.Size = new System.Drawing.Size(817, 286);
+            this.mytabcontrol1.TabIndex = 4;
             // 
             // Fm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 426);
+            this.Controls.Add(this.mytabcontrol1);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.Toolstrip);
             this.Controls.Add(this.MenuStrip);
@@ -234,6 +254,7 @@ namespace ApplicationDev
             this.MainMenuStrip = this.MenuStrip;
             this.Name = "Fm_main";
             this.Text = "Application devy v1.0";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.MenuStrip.ResumeLayout(false);
             this.MenuStrip.PerformLayout();
             this.Toolstrip.ResumeLayout(false);
@@ -267,5 +288,7 @@ namespace ApplicationDev
         private System.Windows.Forms.ToolStripMenuItem MDI_TEST;
         private System.Windows.Forms.ToolStripMenuItem MDI_TEST1;
         private System.Windows.Forms.ToolStripMenuItem TESTYME;
+        private mytabcontrol mytabcontrol1;
+        private System.Windows.Forms.ToolStripMenuItem Fm_item;
     }
 }

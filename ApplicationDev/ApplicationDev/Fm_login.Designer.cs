@@ -29,12 +29,14 @@ namespace ApplicationDev
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.Btn_pwchange = new System.Windows.Forms.Button();
             this.btn_login = new System.Windows.Forms.Button();
             this.lblid = new System.Windows.Forms.Label();
             this.lblpw = new System.Windows.Forms.Label();
             this.txtid = new System.Windows.Forms.TextBox();
             this.txtpw = new System.Windows.Forms.TextBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // Btn_pwchange
@@ -91,6 +93,12 @@ namespace ApplicationDev
             this.txtpw.TabIndex = 5;
             this.txtpw.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtpw_KeyDown);
             // 
+            // timer1
+            // 
+            this.timer1.Enabled = false;
+            this.timer1.Interval = 5000;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Fm_login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -117,6 +125,7 @@ namespace ApplicationDev
         private System.Windows.Forms.Label lblpw;
         private System.Windows.Forms.TextBox txtid;
         private System.Windows.Forms.TextBox txtpw;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
