@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using DEV_Form;
 using System.Windows.Forms;
 using System.Reflection;
+using System.Threading;
 
 namespace ApplicationDev
 {
@@ -41,6 +42,7 @@ namespace ApplicationDev
         private void timer1_Tick(object sender, EventArgs e)
         {
             tsdatenow.Text = DateTime.Now.ToString();
+            
         }
 
         private void M_SYSTEM_DropDownItemClicked(object sender, ToolStripItemClickedEventArgs e)
@@ -58,10 +60,39 @@ namespace ApplicationDev
             Form show_form = (Form)Activator.CreateInstance(typeform);
             //TYPEFORM에서 가져온 이름과 같은 폼을 DEV_FORM.DLL에서 호출(인스턴스 생성)하라.
 
-            show_form.MdiParent = this;
-            show_form.Show();
+            //show_form.MdiParent = this;
+            //show_form.Show();
+            mytabcontrol1.AddForm(show_form);
+        }
+
+        private void Toolstrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
 
         }
 
+    
+    }
+
+    public partial class MDIForm : TabPage
+    { }
+    public partial class mytabcontrol : TabControl
+    {
+        public void AddForm(Form NewForm) //form 형식의 인자를 받겠다
+                                      //형식에 대한...! 인자값에 대한 정확한 규칙을 정의하는 것...! 오버로딩으로 본다.
+        {
+            if (NewForm == null) return; //인자로 받은 폼이 없을 경우 실행 중지 , 이는 Validation.
+            NewForm.TopLevel = false;    //인자로 받은 폼이 최상위 개체가 아님을 선언 
+            MDIForm page = new MDIForm();
+            page.Controls.Clear();       //페이지를 초기화
+            page.Controls.Add(NewForm);  //페이지에 폼 추가
+            page.Text = NewForm.Text;    //폼에서 지정한 이름을 탭 페이지 이름으로 가져오겠다. 
+            page.Name = NewForm.Name;    //폼에서 설정한 이름으로 탭 페이지 설정 Text,name을 둘다 가져온다.
+
+            base.TabPages.Add(page);     //base 는 부모 컨트롤을 가르킨다. 파생된 클래스 안에서 부모 컨트롤의 함수를 호출하기 위해..!
+                                         //탭 컨트롤에 페이지를 추가한다. 
+            NewForm.Show();              //인자로 받은 폼을 보여준다.
+            base.SelectedTab = page;     //TabControl에서 가져오는 selected tab 
+
+        }
     }
 }

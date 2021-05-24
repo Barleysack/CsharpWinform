@@ -17,6 +17,7 @@ namespace ApplicationDev
         {
             InitializeComponent();
             this.Tag="FAIL";
+
         }
 
         private void Btn_pwchange_Click(object sender, EventArgs e)
@@ -35,7 +36,7 @@ namespace ApplicationDev
         {
             string strCon = "Data Source = 61.105.9.203; " +
                 "Initial Catalog = AppDev;" +
-                "User ID=kfqs;Password=1234";
+                "User ID=kfqs1;Password=1234";
             Connect = new SqlConnection(strCon);
 
             Connect.Open();//데이터베이스에 접속한다.
@@ -78,7 +79,7 @@ namespace ApplicationDev
 
 
 
-            }
+                }
 
                 else if (DtTemp.Rows[0]["PW"].ToString() != sPerPw)//row는 이름을 때릴 수 있다네?
                 {
@@ -94,7 +95,7 @@ namespace ApplicationDev
                 }
 
 
-            }
+                }
                 
            
                
@@ -129,16 +130,32 @@ namespace ApplicationDev
             }
         }
 
-        //private void timer1_Tick(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            Random ran = new();
+
+
+            int i = ran.Next(0, 1000);
+            int j = ran.Next(0, 1000);
+            Fm_login login = new();
+            login.StartPosition = FormStartPosition.Manual;
+            login.Location = new Point(i, j);
+            
+            
+            
+            
+        }
+
+        //PRIVATE VOID TIMER1_TICK(OBJECT SENDER, EVENTARGS E)
         //{
-        //    Random ran = new Random();
-            
-        //    int i = ran.Next(0, 10000);
-        //    int j = ran.Next(0, 10000);
-        //    Fm_login login = new();
-        //    login.StartPosition = FormStartPosition.Manual;
-        //    login.Location = new Point(i, j);
-            
+        //    RANDOM RAN = NEW RANDOM();
+
+        //    INT I = RAN.NEXT(0, 10000);
+        //    INT J = RAN.NEXT(0, 10000);
+        //    FM_LOGIN LOGIN = NEW();
+        //    LOGIN.STARTPOSITION = FORMSTARTPOSITION.MANUAL;
+        //    LOGIN.LOCATION = NEW POINT(I, J);
+
         //}
     }
 }
