@@ -31,6 +31,7 @@ namespace DEV_Form
         {
             this.btnAdd = new System.Windows.Forms.GroupBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.rbEnd = new System.Windows.Forms.RadioButton();
             this.rbProd = new System.Windows.Forms.RadioButton();
             this.chkNameOnly = new System.Windows.Forms.CheckBox();
@@ -44,17 +45,16 @@ namespace DEV_Form
             this.label2 = new System.Windows.Forms.Label();
             this.txtItemCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.dgvGrid = new System.Windows.Forms.DataGridView();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnImgSave = new System.Windows.Forms.Button();
             this.btnImgDel = new System.Windows.Forms.Button();
             this.btnImgLoad = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnAdd.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -94,6 +94,17 @@ namespace DEV_Form
             this.btnSearch.TabIndex = 27;
             this.btnSearch.Text = "조회";
             this.btnSearch.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.rbEnd);
+            this.groupBox2.Controls.Add(this.rbProd);
+            this.groupBox2.Location = new System.Drawing.Point(385, 106);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(147, 59);
+            this.groupBox2.TabIndex = 28;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "단종 여부";
             // 
             // rbEnd
             // 
@@ -147,7 +158,7 @@ namespace DEV_Form
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(651, 78);
+            this.label4.Location = new System.Drawing.Point(723, 78);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(20, 20);
             this.label4.TabIndex = 21;
@@ -156,7 +167,7 @@ namespace DEV_Form
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(450, 77);
+            this.label3.Location = new System.Drawing.Point(418, 78);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(74, 20);
             this.label3.TabIndex = 20;
@@ -164,17 +175,19 @@ namespace DEV_Form
             // 
             // dtpEnd
             // 
-            this.dtpEnd.Location = new System.Drawing.Point(677, 73);
+            this.dtpEnd.Location = new System.Drawing.Point(749, 73);
             this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Size = new System.Drawing.Size(113, 27);
+            this.dtpEnd.Size = new System.Drawing.Size(202, 27);
             this.dtpEnd.TabIndex = 19;
+            this.dtpEnd.Value = new System.DateTime(2021, 5, 24, 0, 0, 0, 0);
             // 
             // dtpStart
             // 
-            this.dtpStart.Location = new System.Drawing.Point(532, 73);
+            this.dtpStart.Location = new System.Drawing.Point(498, 73);
             this.dtpStart.Name = "dtpStart";
-            this.dtpStart.Size = new System.Drawing.Size(113, 27);
+            this.dtpStart.Size = new System.Drawing.Size(219, 27);
             this.dtpStart.TabIndex = 18;
+            this.dtpStart.Value = new System.DateTime(2021, 5, 24, 0, 0, 0, 0);
             // 
             // txtItemName
             // 
@@ -208,17 +221,6 @@ namespace DEV_Form
             this.label1.TabIndex = 14;
             this.label1.Text = "품목 코드";
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.rbEnd);
-            this.groupBox2.Controls.Add(this.rbProd);
-            this.groupBox2.Location = new System.Drawing.Point(385, 106);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(147, 59);
-            this.groupBox2.TabIndex = 28;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "단종 여부";
-            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dgvGrid);
@@ -233,33 +235,6 @@ namespace DEV_Form
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "품목정보";
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(12, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(63, 27);
-            this.button1.TabIndex = 28;
-            this.button1.Text = "추가";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Location = new System.Drawing.Point(167, 26);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(63, 27);
-            this.btnDelete.TabIndex = 29;
-            this.btnDelete.Text = "삭제";
-            this.btnDelete.UseVisualStyleBackColor = true;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(88, 26);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(63, 27);
-            this.btnSave.TabIndex = 30;
-            this.btnSave.Text = "저장";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
             // dgvGrid
             // 
             this.dgvGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -270,6 +245,33 @@ namespace DEV_Form
             this.dgvGrid.RowTemplate.Height = 29;
             this.dgvGrid.Size = new System.Drawing.Size(957, 145);
             this.dgvGrid.TabIndex = 31;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(88, 26);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(63, 27);
+            this.btnSave.TabIndex = 30;
+            this.btnSave.Text = "저장";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(167, 26);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(63, 27);
+            this.btnDelete.TabIndex = 29;
+            this.btnDelete.Text = "삭제";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 26);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(63, 27);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "추가";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -284,14 +286,6 @@ namespace DEV_Form
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "품목 이미지 관리";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(23, 26);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(342, 120);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
             // 
             // btnImgSave
             // 
@@ -320,6 +314,14 @@ namespace DEV_Form
             this.btnImgLoad.Text = "이미지 불러오기";
             this.btnImgLoad.UseVisualStyleBackColor = true;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(23, 26);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(342, 120);
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
             // Fm_item
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -332,6 +334,7 @@ namespace DEV_Form
             this.Name = "Fm_item";
             this.Text = "Fm_item";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.Fm_item_Load);
             this.btnAdd.ResumeLayout(false);
             this.btnAdd.PerformLayout();
             this.groupBox2.ResumeLayout(false);
