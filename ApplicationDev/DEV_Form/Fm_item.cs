@@ -27,6 +27,7 @@ namespace DEV_Form
             {
                 // 콤보박스 품목 상세 데이터 조회 및 추가
                 // 접속 정보 커넥선 에 등록 및 객체 선언
+                dgvGrid.DataSource = null; //빈 그릇을 만들어줍시다
                 connect = new SqlConnection(strCon);
                 connect.Open();
 
@@ -36,13 +37,13 @@ namespace DEV_Form
                     return;
                 }
 
-                SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT ITEMDESC FROM TB_TESTITEM_DSH ", connect);
+                SqlDataAdapter adapter = new SqlDataAdapter("SELECT DISTINCT ITEMDETAIL FROM TB_TESTITEM_KBS ", connect);
                 DataTable dtTemp = new DataTable();
                 adapter.Fill(dtTemp);
 
                 cmbItemDetail.DataSource = dtTemp;
-                cmbItemDetail.DisplayMember = "ITEMDESC"; // 눈으로 보여줄 항목
-                cmbItemDetail.ValueMember = "ITEMDESC"; // 실제 데이터를 처리할 코드 항목 
+                cmbItemDetail.DisplayMember = "ITEMDETAIL"; // 눈으로 보여줄 항목
+                cmbItemDetail.ValueMember = "ITEMDETAIL"; // 실제 데이터를 처리할 코드 항목 
                 cmbItemDetail.Text = "";
             }
             catch (Exception ex)
@@ -97,7 +98,7 @@ namespace DEV_Form
                                                             "       MAKER,     " +
                                                             "       EDITDATE,  " +
                                                             "       EDITOR     " +
-                                                            "  FROM TB_TESTITEM_DSH WITH(NOLOCK) " +
+                                                            "  FROM TB_TESTITEM_KBS WITH(NOLOCK) " +
                                                             " WHERE ITEMCODE LIKE '%" + sIC + "%' " +
                                                             "   AND ITEMNAME LIKE '%" + sIN + "%' " +
                                                             "   AND ITEMDETAIL LIKE '%" + sID + "%' " +
@@ -114,8 +115,8 @@ namespace DEV_Form
                 // 그리드뷰의 헤더 명칭 선언
                 dgvGrid.Columns["ITEMCODE"].HeaderText = "품목 코드";
                 dgvGrid.Columns["ITEMNAME"].HeaderText = "품목 명";
-                dgvGrid.Columns["ITEMDESC"].HeaderText = "품목 상세";
-                dgvGrid.Columns["ITEMDESC2"].HeaderText = "품목 상세2";
+                dgvGrid.Columns["ITEMDETAIL"].HeaderText = "품목 상세";
+                dgvGrid.Columns["ITEMDETAIL2"].HeaderText = "품목 상세2";
                 dgvGrid.Columns["ENDFLAG"].HeaderText = "단종 여부";
                 dgvGrid.Columns["MAKEDATE"].HeaderText = "등록 일시";
                 dgvGrid.Columns["MAKER"].HeaderText = "등록자";
@@ -160,7 +161,13 @@ namespace DEV_Form
 
 
         }
-
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            // 데이터 그리드 뷰 에 신규 행 추가
+            DataRow dr = ((DataTable)dgvGrid.DataSource).NewRow();
+            ((DataTable)dgvGrid.DataSource).Rows.Add(dr);
+            dgvGrid.Columns["ITEMCODE"].ReadOnly = false;
+        }
         private void btnDelete_Click(object sender, EventArgs e)
         {
             //선택된 행 삭제.
