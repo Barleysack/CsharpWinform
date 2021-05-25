@@ -180,7 +180,7 @@ namespace DEV_Form
             this.dtpEnd.Name = "dtpEnd";
             this.dtpEnd.Size = new System.Drawing.Size(202, 27);
             this.dtpEnd.TabIndex = 19;
-            this.dtpEnd.Value = new System.DateTime(2021, 5, 24, 0, 0, 0, 0);
+            this.dtpEnd.Value = new System.DateTime(2021, 5, 25, 0, 0, 0, 0);
             // 
             // dtpStart
             // 
@@ -188,7 +188,7 @@ namespace DEV_Form
             this.dtpStart.Name = "dtpStart";
             this.dtpStart.Size = new System.Drawing.Size(219, 27);
             this.dtpStart.TabIndex = 18;
-            this.dtpStart.Value = new System.DateTime(2021, 5, 24, 0, 0, 0, 0);
+            this.dtpStart.Value = new System.DateTime(2021, 5, 25, 0, 0, 0, 0);
             // 
             // txtItemName
             // 
@@ -257,6 +257,7 @@ namespace DEV_Form
             this.btnSave.TabIndex = 30;
             this.btnSave.Text = "저장";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnDelete
             // 
@@ -276,6 +277,7 @@ namespace DEV_Form
             this.button1.TabIndex = 28;
             this.button1.Text = "추가";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // groupBox1
             // 

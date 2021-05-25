@@ -18,21 +18,23 @@ namespace ApplicationDev
         public Fm_main()
         {
             InitializeComponent();
-            Fm_login login = new();
-            login.ShowDialog();
+            this.M_SYSTEM.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.M_SYSTEM_DropDownItemClicked);
             this.stbExit.Click += new System.EventHandler(this.stbExit_Click);
             this.stbClose.Click += new System.EventHandler(this.stbClose_Click);
-            this.M_SYSTEM.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.M_SYSTEM_DropDownItemClicked);
-            tsusername.Text = login.Tag.ToString();
+            //Fm_login login = new();
+            //login.ShowDialog();
+            
+            
+            //tsusername.Text = login.Tag.ToString();
             //태그값은 스르르 사라집니다 로그인이 끝나면-
-            if (tsusername.Text == "FAIL")
-            {
-                //습관처럼 쓰십쇼...
-                System.Environment.Exit(0);
+            //if (tsusername.Text == "FAIL")
+            //{
+            //    //습관처럼 쓰십쇼...
+            //    System.Environment.Exit(0);
                
                 
 
-            }
+            //}
         }
 
         private void stbClose_Click(object sender, EventArgs e)

@@ -19,7 +19,7 @@ namespace DEV_Form
 
         private void Fm_item_Load(object sender, EventArgs e)//이미 메모리에 올라가있는 클래스가 호출될때 실행
         {
-
+            
 
             //콤보 박스 품목 상세 데이터 조회 및 추가
 
@@ -27,10 +27,10 @@ namespace DEV_Form
             {
                 // 콤보박스 품목 상세 데이터 조회 및 추가
                 // 접속 정보 커넥선 에 등록 및 객체 선언
-                dgvGrid.DataSource = null; //빈 그릇을 만들어줍시다
+                 //빈 그릇을 만들어줍시다
                 connect = new SqlConnection(strCon);
                 connect.Open();
-
+                dtpStart.Text = string.Format("{0:2020-01-01}", DateTime.Now);
                 if (connect.State != System.Data.ConnectionState.Open)
                 {
                     MessageBox.Show("데이터 베이스 연결에 실패 하였습니다.");
@@ -55,7 +55,7 @@ namespace DEV_Form
                 connect.Close();
             }
 
-
+            
 
         }
 
@@ -95,14 +95,14 @@ namespace DEV_Form
                                                             "       ITEMDETAIL2, "                        +
                                                             "       CASE WHEN ENDFLAG = 'Y' THEN '단종'"  +
                                                             "            WHEN ENDFLAG = 'N' THEN '생산'"  +
-                                                            "            END AS ENDFLAG                "  +
+                                                            "            END AS ENDFLAG,                " +
                                                             //해당 결과값을 나타낼 행의 이름은 ENDFLAG로 하겠다.
                                                             "       PRODDATE,  "                          +
                                                             "       MAKEDATE,  "                          +
                                                             "       MAKER,     "                          +
                                                             "       EDITDATE,  "                          +
                                                             "       EDITOR     "                          +
-                                                            "  FROM TB_TESTITEM_KBS WITH(NOLOCK) "        +
+                                                            "  FROM TB_TESTITEM_KBS WITH(NOLOCK)  "        +
                                                             " WHERE ITEMCODE LIKE '%" + sIC + "%' "       +
                                                             "   AND ITEMNAME LIKE '%" + sIN + "%' "       +
                                                             "   AND ITEMDETAIL LIKE '%" + sID + "%' "     +
@@ -227,6 +227,63 @@ namespace DEV_Form
                 //끝에는 DB와의 연결을 끊어주어야...! 이런 것들 놓치지 않는 것이 좋을듯.
 
             }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (dgvGrid.Rows.Count == 0) return;
+            if (MessageBox.Show("등록 ㄱㄱ?", "데이터 등록", MessageBoxButtons.YesNo) == DialogResult.No) return; //VCVC
+            string sIC = dgvGrid.CurrentRow.Cells["ITEMCODE"].Value.ToString();
+            string sIN = dgvGrid.CurrentRow.Cells["ITEMNAME"].Value.ToString();
+            string sID = dgvGrid.CurrentRow.Cells["ITEMDETAIL"].Value.ToString();
+            string sID2 = dgvGrid.CurrentRow.Cells["ITEMDETAIL2"].Value.ToString();
+            string sPD = dgvGrid.CurrentRow.Cells["PRODDATE"].Value.ToString();
+            string sEF = dgvGrid.CurrentRow.Cells["ENDFLAG"].Value.ToString();
+
+            SqlCommand cmd =new();
+            SqlTransaction transaction;
+            connect = new SqlConnection(strCon);
+            connect.Open();
+
+            // 데이터 조회 후 해당 데이터가 있는지 확인 후 UPDATE/INSERT 분기 
+            string Ssql = " SELECT ITEMCODE FROM TB_TESTITEM_KBS WHERE ITEMCODE = '"+sIC+"'";
+            SqlDataAdapter adapter = new SqlDataAdapter(Ssql, connect);
+            DataTable dttemp = new DataTable();
+            adapter.Fill(dttemp);
+            transaction = connect.BeginTransaction("TESTTRAN");
+            cmd.Transaction = transaction;
+            cmd.Connection = connect;
+            //데이터가 있는 경우 UPDATE, 없는 경우 INSERT 
+            if(dttemp.Rows.Count == 0)
+            {
+                //데이터가 없으니 INSERT 해라.
+
+                cmd.CommandText = "INSERT INTO TB_TESTITEM_KBS (ITEMCODE,ITEMNAME,ITEMDETAIL,ITEMDETAIL2,ENDFLAG,PRODDATE,MAKEDATE,MAKER)" +
+                                  "VALUES ('" + sIC + "','" + sIN + "','" + sID + "','" + sID2 + "','" + sEF + "','" + sPD + "',GETDATE(),'" + "" + "')";
+                //SQL에서 인식되는 문자열을 위한 작은 따옴표들..!
+
+            }
+            else
+            {
+                //데이터가 있으니 UPDATE 해라. 
+
+                cmd.CommandText = "UPDATE TB_TESTITEM_KBS                                  " +
+                                  "    SET ITEMNAME = '" + sIC + "',             " +
+                                  "        ITEMDETAIL = '" + sID + "',             " +
+                                  "        ITEMDETAIL2 = '" + sID2+ "',            " +
+                                  "        ENDFLAG = '" + sEF + "',              " +
+                                  "        PRODDATE = '" + sPD + "',             " +
+                                  "        EDITOR = '',  " +
+                                  //"        EDITOR = '"    + Commoncs.LoginUserID + "',  " +
+                                  "        EDITDATE = GETDATE()     " +
+                                  "  WHERE ITEMCODE = '" + sIC + "'";
+            }
+            cmd.ExecuteNonQuery(); //CRUD 실행함수
+            //성공 시 DB COMMIT
+            transaction.Commit();
+            MessageBox.Show("성공입니다");
+            connect.Close();
+
         }
     }
 }
