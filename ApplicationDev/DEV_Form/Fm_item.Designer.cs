@@ -159,7 +159,7 @@ namespace DEV_Form
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(723, 77);
+            this.label4.Location = new System.Drawing.Point(624, 77);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(20, 20);
             this.label4.TabIndex = 21;
@@ -176,17 +176,19 @@ namespace DEV_Form
             // 
             // dtpEnd
             // 
-            this.dtpEnd.Location = new System.Drawing.Point(750, 73);
+            this.dtpEnd.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpEnd.Location = new System.Drawing.Point(651, 73);
             this.dtpEnd.Name = "dtpEnd";
-            this.dtpEnd.Size = new System.Drawing.Size(202, 27);
+            this.dtpEnd.Size = new System.Drawing.Size(115, 27);
             this.dtpEnd.TabIndex = 19;
             this.dtpEnd.Value = new System.DateTime(2021, 5, 25, 0, 0, 0, 0);
             // 
             // dtpStart
             // 
+            this.dtpStart.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpStart.Location = new System.Drawing.Point(498, 73);
             this.dtpStart.Name = "dtpStart";
-            this.dtpStart.Size = new System.Drawing.Size(219, 27);
+            this.dtpStart.Size = new System.Drawing.Size(119, 27);
             this.dtpStart.TabIndex = 18;
             this.dtpStart.Value = new System.DateTime(2021, 5, 25, 0, 0, 0, 0);
             // 

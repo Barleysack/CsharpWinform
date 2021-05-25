@@ -245,39 +245,52 @@ namespace DEV_Form
             connect = new SqlConnection(strCon);
             connect.Open();
 
-            // 데이터 조회 후 해당 데이터가 있는지 확인 후 UPDATE/INSERT 분기 
-            string Ssql = " SELECT ITEMCODE FROM TB_TESTITEM_KBS WHERE ITEMCODE = '"+sIC+"'";
+            //데이터 조회 후 해당 데이터가 있는지 확인 후 UPDATE / INSERT 분기
+            string Ssql = " SELECT ITEMCODE FROM TB_TESTITEM_KBS WHERE ITEMCODE = '" + sIC + "'";
             SqlDataAdapter adapter = new SqlDataAdapter(Ssql, connect);
             DataTable dttemp = new DataTable();
             adapter.Fill(dttemp);
             transaction = connect.BeginTransaction("TESTTRAN");
             cmd.Transaction = transaction;
             cmd.Connection = connect;
+            cmd.CommandText = "UPDATE TB_TESTITEM_KBS                                   " +
+                                      "    SET ITEMNAME = '" + sIN + "',                " +
+                                      "        ITEMDETAIL = '" + sID + "',              " +
+                                      "        ITEMDETAIL2 = '" + sID2 + "',            " +
+                                      "        ENDFLAG = '" + sEF + "',                 " +
+                                      "        PRODDATE = '" + sPD + "',                " +
+                                      "        EDITOR = '',  " +
+                                      //"        EDITOR = '"    + Commoncs.LoginUserID + "',  " +
+                                      "        EDITDATE = GETDATE()                     " +
+                                      "  WHERE ITEMCODE = '" + sIC +                  "'" +
+                                      " IF (@@ROWCOUNT =0) " + //SQL의 ROWCOUNT함수를 알아두자.
+                                      "INSERT INTO TB_TESTITEM_KBS(ITEMCODE,           ITEMNAME,            ITEMDETAIL,           ITEMDETAIL2,          ENDFLAG,           PRODDATE,      MAKEDATE,     MAKER) " +
+                                      "VALUES('" + sIC + "','" + sIN + "','" + sID+ "','" + sID2 + "','" + sEF + "','" + sPD + "',GETDATE(),'')";
             //데이터가 있는 경우 UPDATE, 없는 경우 INSERT 
-            if(dttemp.Rows.Count == 0)
-            {
-                //데이터가 없으니 INSERT 해라.
+            //if(dttemp.Rows.Count == 0)
+            //{
+            //    //데이터가 없으니 INSERT 해라.
 
-                cmd.CommandText = "INSERT INTO TB_TESTITEM_KBS (ITEMCODE,ITEMNAME,ITEMDETAIL,ITEMDETAIL2,ENDFLAG,PRODDATE,MAKEDATE,MAKER)" +
-                                  "VALUES ('" + sIC + "','" + sIN + "','" + sID + "','" + sID2 + "','" + sEF + "','" + sPD + "',GETDATE(),'" + "" + "')";
-                //SQL에서 인식되는 문자열을 위한 작은 따옴표들..!
+            //    cmd.CommandText = "INSERT INTO TB_TESTITEM_KBS (ITEMCODE,ITEMNAME,ITEMDETAIL,ITEMDETAIL2,ENDFLAG,PRODDATE,MAKEDATE,MAKER)" +
+            //                      "VALUES ('" + sIC + "','" + sIN + "','" + sID + "','" + sID2 + "','" + "N" + "','" + sPD + "',GETDATE(),'" + "" + "')";
+            //    //SQL에서 인식되는 문자열을 위한 작은 따옴표들..!
 
-            }
-            else
-            {
-                //데이터가 있으니 UPDATE 해라. 
+            //}
+            //else
+            //{
+            //    //데이터가 있으니 UPDATE 해라. 
 
-                cmd.CommandText = "UPDATE TB_TESTITEM_KBS                                  " +
-                                  "    SET ITEMNAME = '" + sIC + "',             " +
-                                  "        ITEMDETAIL = '" + sID + "',             " +
-                                  "        ITEMDETAIL2 = '" + sID2+ "',            " +
-                                  "        ENDFLAG = '" + sEF + "',              " +
-                                  "        PRODDATE = '" + sPD + "',             " +
-                                  "        EDITOR = '',  " +
-                                  //"        EDITOR = '"    + Commoncs.LoginUserID + "',  " +
-                                  "        EDITDATE = GETDATE()     " +
-                                  "  WHERE ITEMCODE = '" + sIC + "'";
-            }
+            //    cmd.CommandText = "UPDATE TB_TESTITEM_KBS                                  " +
+            //                      "    SET ITEMNAME = '" + sIN + "',             " +
+            //                      "        ITEMDETAIL = '" + sID + "',             " +
+            //                      "        ITEMDETAIL2 = '" + sID2+ "',            " +
+            //                      "        ENDFLAG = '" + "N" + "',              " +
+            //                      "        PRODDATE = '" + sPD + "',             " +
+            //                      "        EDITOR = '',  " +
+            //                      //"        EDITOR = '"    + Commoncs.LoginUserID + "',  " +
+            //                      "        EDITDATE = GETDATE()     " +
+            //                      "  WHERE ITEMCODE = '" + sIC + "'";
+            //}
             cmd.ExecuteNonQuery(); //CRUD 실행함수
             //성공 시 DB COMMIT
             transaction.Commit();
