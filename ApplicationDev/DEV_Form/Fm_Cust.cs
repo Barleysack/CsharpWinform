@@ -333,7 +333,7 @@ namespace DEV_Form
                                       "  WHERE CUSTCODE = '" + sCC + "'" +
                                       " IF (@@ROWCOUNT =0) " + //SQL의 ROWCOUNT함수를 알아두자.
                                       "INSERT INTO TB_CUST_KBS(CUSTCODE,           CUSTTYPE,            CUSTNAME,           BIZCLASS,          BIZTYPE,           USEFLAG,      FIRSTDATE,     MAKEDATE, MAKER) " +
-                                      "VALUES('" + sCC + "','" + sCT + "','" + sCN + "','" + sBC + "','" + sBT + "','" + uF + "',GETDATE(),'" + sFD + "',')";
+                                      "VALUES("+"'"+sCC+"'" +"','"+ "'"+sCT+"'" +"','"+ sCN+ "','"+ sBC +"','"+ sBT+ "','"+ uF +"','"+"'GETDATE()'"+"','"+ sFD+")";
 
 
             cmd.ExecuteNonQuery(); //CRUD 실행함수
