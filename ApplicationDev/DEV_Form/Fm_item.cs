@@ -111,6 +111,7 @@ namespace DEV_Form
 
                                                             , connect);
                 //해당 sql문을 connect 스트링에 적혀있는 주소로 쿼리해줄 객체 생성
+                //시스템에서 열리는 화면 한개를 한 본이라고 부른다.
 
                 DataTable dtTemp = new DataTable();
                 Adapter.Fill(dtTemp); //앞에서 해보았듯이, 빈 그릇을 챙겨와서...
@@ -204,8 +205,7 @@ namespace DEV_Form
             try
             {
                 string Itemcode = dgvGrid.CurrentRow.Cells["ITEMCODE"].Value.ToString(); //현재 선택된 열을 itemcode가 나타냅니다.
-                cmd.CommandText = "DELETE TB_TESTITEM_KBS"+/*여긴 당연히 내 데이터베이스를 써야..*/
-                    "WHERE ITEMCODE = '" + Itemcode + "'"; //해당하는 열을 날리시오...따옴표를 안에 넣고 싶을때 이리 처리하는 디-테일
+                cmd.CommandText = "DELETE TB_TESTITEM_KBS WHERE ITEMCODE = '" + Itemcode + "'"; //해당하는 열을 날리시오...따옴표를 안에 넣고 싶을때 이리 처리하는 디-테일
 
                 cmd.ExecuteNonQuery();
                 //연결에 대한 Transact - SQL 문을 실행하고 영향을 받는 행의 수를 반환합니다.
@@ -239,7 +239,7 @@ namespace DEV_Form
             string sID2 = dgvGrid.CurrentRow.Cells["ITEMDETAIL2"].Value.ToString();
             string sPD = dgvGrid.CurrentRow.Cells["PRODDATE"].Value.ToString();
             string sEF = dgvGrid.CurrentRow.Cells["ENDFLAG"].Value.ToString();
-
+            
             SqlCommand cmd =new();
             SqlTransaction transaction;
             connect = new SqlConnection(strCon);
@@ -259,8 +259,8 @@ namespace DEV_Form
                                       "        ITEMDETAIL2 = '" + sID2 + "',            " +
                                       "        ENDFLAG = '" + sEF + "',                 " +
                                       "        PRODDATE = '" + sPD + "',                " +
-                                      "        EDITOR = '',  " +
-                                      //"        EDITOR = '"    + Commoncs.LoginUserID + "',  " +
+                                      "        EDITOR = '" + Common.LogInID + "', " +
+                                      //"        
                                       "        EDITDATE = GETDATE()                     " +
                                       "  WHERE ITEMCODE = '" + sIC +                  "'" +
                                       " IF (@@ROWCOUNT =0) " + //SQL의 ROWCOUNT함수를 알아두자.
