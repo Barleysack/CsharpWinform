@@ -82,34 +82,48 @@ namespace DEV_Form
                 string sSD = dtpStart.Text; //date-time picker
                 string sED = dtpEnd.Text;
                 string sID = cmbItemDetail.Text;
-                string sEF = "N"; //나머진 읽고 알아듣는게..
+                string sEF = null; //나머진 읽고 알아듣는게..
 
-                if (rbProd.Checked == true) sEF = "Y";//단종여부
+                if (rbProd.Checked == true) sEF = "N";//단종여부
+                if (rbEnd.Checked == true) sEF = "Y";
                 if (chkNameOnly.Checked == true) sIC = "";//이름으로만 검색
 
                 //SQL 제어구문 
-                SqlDataAdapter Adapter = new SqlDataAdapter("SELECT ITEMCODE,  " +
-                                                            "       ITEMNAME,  " +
-                                                            "       ITEMDETAIL,  " +
-                                                            "       ITEMDETAIL2, " +
-                                                            "       ENDFLAG,   " +
-                                                            "       PRODDATE,  " +
-                                                            "       MAKEDATE,  " +
-                                                            "       MAKER,     " +
-                                                            "       EDITDATE,  " +
-                                                            "       EDITOR     " +
-                                                            "  FROM TB_TESTITEM_KBS WITH(NOLOCK) " +
-                                                            " WHERE ITEMCODE LIKE '%" + sIC + "%' " +
-                                                            "   AND ITEMNAME LIKE '%" + sIN + "%' " +
-                                                            "   AND ITEMDETAIL LIKE '%" + sID + "%' " +
-                                                            "   AND ENDFLAG  = '" + sEF + "'", connect);
+                SqlDataAdapter Adapter = new SqlDataAdapter("SELECT ITEMCODE,  "                          +
+                                                            "       ITEMNAME,  "                          +
+                                                            "       ITEMDETAIL,  "                        +
+                                                            "       ITEMDETAIL2, "                        +
+                                                            "       CASE WHEN ENDFLAG = 'Y' THEN '단종'"  +
+                                                            "            WHEN ENDFLAG = 'N' THEN '생산'"  +
+                                                            "            END AS ENDFLAG                "  +
+                                                            //해당 결과값을 나타낼 행의 이름은 ENDFLAG로 하겠다.
+                                                            "       PRODDATE,  "                          +
+                                                            "       MAKEDATE,  "                          +
+                                                            "       MAKER,     "                          +
+                                                            "       EDITDATE,  "                          +
+                                                            "       EDITOR     "                          +
+                                                            "  FROM TB_TESTITEM_KBS WITH(NOLOCK) "        +
+                                                            " WHERE ITEMCODE LIKE '%" + sIC + "%' "       +
+                                                            "   AND ITEMNAME LIKE '%" + sIN + "%' "       +
+                                                            "   AND ITEMDETAIL LIKE '%" + sID + "%' "     +
+                                                            "   AND ENDFLAG  = '" + sEF + "'"             +
+                                                            "   AND PRODDATE BETWEEN'" +sSD +"'AND'"+ sED + "'"
+
+                                                            , connect);
                 //해당 sql문을 connect 스트링에 적혀있는 주소로 쿼리해줄 객체 생성
 
                 DataTable dtTemp = new DataTable();
                 Adapter.Fill(dtTemp); //앞에서 해보았듯이, 빈 그릇을 챙겨와서...
                 //adapter 객체가 해당 데이터테이블을 채우도록 해준다.
 
-                if (dtTemp.Rows.Count == 0) return; //없으면 이 이벤트 종-료
+                if (dtTemp.Rows.Count == 0)
+                {
+                    dgvGrid.DataSource = null;
+
+                    return; //아래 else 안해도 되도록...
+                }
+                    
+                    //없으면 이 이벤트 종-료
                 dgvGrid.DataSource = dtTemp; // 데이터 그리드 뷰에 (아까 채운) 데이터 테이블 등록
 
                 // 그리드뷰의 헤더 명칭 선언
@@ -190,7 +204,7 @@ namespace DEV_Form
             try
             {
                 string Itemcode = dgvGrid.CurrentRow.Cells["ITEMCODE"].Value.ToString(); //현재 선택된 열을 itemcode가 나타냅니다.
-                cmd.CommandText = "DELETE TB_TESTITEM_DSH"+/*여긴 당연히 내 데이터베이스를 써야..*/
+                cmd.CommandText = "DELETE TB_TESTITEM_KBS"+/*여긴 당연히 내 데이터베이스를 써야..*/
                     "WHERE ITEMCODE = '" + Itemcode + "'"; //해당하는 열을 날리시오...따옴표를 안에 넣고 싶을때 이리 처리하는 디-테일
 
                 cmd.ExecuteNonQuery();

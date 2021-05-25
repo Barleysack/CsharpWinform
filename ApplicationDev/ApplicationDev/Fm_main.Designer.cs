@@ -78,20 +78,20 @@ namespace ApplicationDev
             // MDI_TEST1
             // 
             this.MDI_TEST1.Name = "MDI_TEST1";
-            this.MDI_TEST1.Size = new System.Drawing.Size(182, 26);
+            this.MDI_TEST1.Size = new System.Drawing.Size(172, 26);
             this.MDI_TEST1.Text = "시험용 화면";
             // 
             // TESTYME
             // 
             this.TESTYME.Name = "TESTYME";
-            this.TESTYME.Size = new System.Drawing.Size(182, 26);
+            this.TESTYME.Size = new System.Drawing.Size(172, 26);
             this.TESTYME.Text = "Testyme";
             // 
             // Fm_item
             // 
             this.Fm_item.Name = "Fm_item";
-            this.Fm_item.Size = new System.Drawing.Size(182, 26);
-            this.Fm_item.Text = "SearchSearch";
+            this.Fm_item.Size = new System.Drawing.Size(172, 26);
+            this.Fm_item.Text = "품목 관리";
             // 
             // Toolstrip
             // 
