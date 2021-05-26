@@ -104,8 +104,8 @@ namespace ApplicationDev
                else if ((DtTemp.Rows[0]["PW"].ToString() == sPerPw))
                 {
                     MessageBox.Show("환영합니다!");
-                    DEV_Form.Common.LogInID = txtid.Text ;
-                    DEV_Form.Common.LogInName = DtTemp.Rows[0]["USERNAME"].ToString();
+                    Common.LogInID = txtid.Text ;
+                    Common.LogInName = DtTemp.Rows[0]["USERNAME"].ToString();
                     this.Tag = DtTemp.Rows[0]["USERNAME"].ToString(); //요건 종료될때까지 살아있나? 아니다.
                     this.Close();
                 
