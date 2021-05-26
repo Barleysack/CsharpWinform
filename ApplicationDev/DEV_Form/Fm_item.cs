@@ -8,7 +8,7 @@ using System.IO;
 
 namespace DEV_Form
 {
-    public partial class Fm_item : Form
+    public partial class Fm_item : Form , ChildInterface
     {
         public Fm_item()
         {
@@ -430,6 +430,26 @@ namespace DEV_Form
 
             }
 
+        }
+
+        public void Inquire()
+        {
+            btnSearch_Click(null,null);
+        }
+
+        public void DoNew()
+        {
+            
+        }
+
+        public void Delete()
+        {
+            
+        }
+
+        public void Save()
+        {
+            
         }
     }
 }

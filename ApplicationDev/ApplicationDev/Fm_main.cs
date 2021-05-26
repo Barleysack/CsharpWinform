@@ -125,7 +125,7 @@ namespace ApplicationDev
         }
         private void ChildCommand(String Command)
         {
-            if (this.mytabcontrol1.TabPages.Count == 0) ; return;
+            if (this.mytabcontrol1.TabPages.Count == 0)  return;
             var Child = mytabcontrol1.SelectedTab.Controls[0] as DEV_Form.ChildInterface; //interface를 가진지 확인.
             switch (Command)
             {
