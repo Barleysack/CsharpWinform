@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using ApplicationDev;
 
 namespace DEV_Form
 {
@@ -321,7 +322,7 @@ namespace DEV_Form
             transaction = connect.BeginTransaction("TESTTRAN");
             cmd.Transaction = transaction;
             cmd.Connection = connect;
-            cmd.CommandText = "UPDATE TB_CUST_KBS                                   " +
+            cmd.CommandText = "UPDATE TB_CUST_KBS  //업데이트할때는 기본 키를 지켜야..                                 " +
                                       "    SET CUSTCODE = '" + sCC + "',                " +
                                       "        CUSTTYPE = '" + sCT + "',              " +
                                       "        CUSTNAME = '" + sCN + "',            " +
@@ -332,8 +333,8 @@ namespace DEV_Form
                                       "        EDITDATE = GETDATE()                     " +
                                       "  WHERE CUSTCODE = '" + sCC + "'" +
                                       " IF (@@ROWCOUNT =0) " + //SQL의 ROWCOUNT함수를 알아두자.
-                                      "INSERT INTO TB_CUST_KBS(CUSTCODE,           CUSTTYPE,            CUSTNAME,           BIZCLASS,          BIZTYPE,           USEFLAG,      FIRSTDATE,     MAKEDATE, MAKER) " +
-                                      "VALUES("+"'"+sCC+"'" +"','"+ "'"+sCT+"'" +"','"+ sCN+ "','"+ sBC +"','"+ sBT+ "','"+ uF +"','"+"'GETDATE()'"+"','"+ sFD+")";
+                                      "INSERT INTO TB_CUST_KBS(CUSTCODE,CUSTTYPE, CUSTNAME,BIZCLASS,BIZTYPE,USEFLAG,FIRSTDATE,MAKEDATE,MAKER) " +
+                                      "VALUES('"+sCC+"','"+sCT+"','"+sCN+"','"+sBC+"','"+sBT+"','"+uF+"','"+sFD+"',"+"GETDATE(),"+"''"+")";
 
 
             cmd.ExecuteNonQuery(); //CRUD 실행함수
