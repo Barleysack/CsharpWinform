@@ -406,11 +406,14 @@ namespace DEV_Form
             if (dgvGrid.Rows.Count == 0) return;
             if (MessageBox.Show("선택된 이미지를 삭제하시겠습니까?", "이미지 삭제", MessageBoxButtons.YesNo) == DialogResult.No) return;
             SqlCommand cmd = new SqlCommand();
+            connect = new SqlConnection(strCon);
             connect.Open();
+            
             try
             {
                 string sIC = dgvGrid.CurrentRow.Cells["ITEMCODE"].Value.ToString();
-                cmd.CommandText = $"UPDATE TB_TESTITEM_KBS SET ITEMIMG = null WHERE ITEMCODE = {sIC}";
+                cmd.CommandText = $"UPDATE TB_TESTITEM_KBS SET ITEMIMG = null WHERE ITEMCODE = '{sIC}'";
+                cmd.Connection = connect;
                 cmd.ExecuteNonQuery();
                 PicItem.Image = null;
                 MessageBox.Show("정상 삭제 완료");

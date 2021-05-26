@@ -21,6 +21,13 @@ namespace ApplicationDev
             this.M_SYSTEM.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.M_SYSTEM_DropDownItemClicked);
             this.stbExit.Click += new System.EventHandler(this.stbExit_Click);
             this.stbClose.Click += new System.EventHandler(this.stbClose_Click);
+
+            this.stbSearch.Click += new System.EventHandler(this.stbSearch_Click);
+            
+            this.stbInsert.Click += new System.EventHandler(this.stbInsert_Click);
+            this.stbDel.Click += new System.EventHandler(this.stbDel_Click);
+            this.stbSave.Click += new System.EventHandler(this.stbSave_Click);
+
             //Fm_login login = new();
             //login.ShowDialog(); 
 
@@ -36,7 +43,7 @@ namespace ApplicationDev
 
 
             //   }
-            }
+        }
 
         private void stbClose_Click(object sender, EventArgs e)
         {
@@ -52,8 +59,23 @@ namespace ApplicationDev
         {
             Close();
         }
+        private void stbSearch_Click(object sender, EventArgs e) //조회
+        {
+            ChildCommand("SEARCH");
+        }
+        private void stbInsert_Click(object sender, EventArgs e) //추가
+        {
+            ChildCommand("NEW");
+        }
+        private void stbDel_Click(object sender, EventArgs e) //삭제
+        {
+            ChildCommand("DELETE");
+        }
+        private void stbSave_Click(object sender, EventArgs e) //저장
+        {
+            ChildCommand("SAVE");
+        }
 
-        
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -101,7 +123,20 @@ namespace ApplicationDev
         {
 
         }
+        private void ChildCommand(String Command)
+        {
+            if (this.mytabcontrol1.TabPages.Count == 0) ; return;
+            var Child = mytabcontrol1.SelectedTab.Controls[0] as DEV_Form.ChildInterface; //interface를 가진지 확인.
+            switch (Command)
+            {
+                case "NEW":Child.DoNew(); break;
+                case "SAVE":Child.Save(); break;
+                case "SEARCH": Child.Inquire(); break;
+                case "DELETE": Child.Delete(); break;
+            }
 
+
+        }
     
     }
 
