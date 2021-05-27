@@ -35,7 +35,7 @@ namespace ApplicationDev
         
         private void btn_login_Click(object sender, EventArgs e)
         {
-            string strCon = "Data Source = 61.105.9.203; " +
+            string strCon = "Data Source = 222.235.141.8; " +
                 "Initial Catalog = AppDev;" +
                 "User ID=kfqs1;Password=1234";
             Connect = new SqlConnection(strCon);
@@ -104,8 +104,8 @@ namespace ApplicationDev
                else if ((DtTemp.Rows[0]["PW"].ToString() == sPerPw))
                 {
                     MessageBox.Show("환영합니다!");
-                    Common.LogInID = txtid.Text ;
-                    Common.LogInName = DtTemp.Rows[0]["USERNAME"].ToString();
+                DEV_Form. Common.LogInID = txtid.Text ;
+                    DEV_Form.Common.LogInName = DtTemp.Rows[0]["USERNAME"].ToString();
                     this.Tag = DtTemp.Rows[0]["USERNAME"].ToString(); //요건 종료될때까지 살아있나? 아니다.
                     this.Close();
                 

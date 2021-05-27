@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using ApplicationDev;
+
 
 namespace DEV_Form
 {
@@ -18,7 +18,7 @@ namespace DEV_Form
     {
 
         private SqlConnection connect = null; //접속 정보 객체 명명 
-        string strCon = "Data Source = 61.105.9.203; " +
+        string strCon = "Data Source = 222.235.141.8; " +
                 "Initial Catalog = AppDev;" +
                 "User ID=kfqs1;Password=1234";
         public Fm_Cust()
