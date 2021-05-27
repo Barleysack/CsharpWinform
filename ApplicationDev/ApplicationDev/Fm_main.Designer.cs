@@ -51,6 +51,7 @@ namespace ApplicationDev
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.MDI_TEST = new System.Windows.Forms.ToolStripMenuItem();
             this.mytabcontrol1 = new ApplicationDev.mytabcontrol();
+            this.FM_user = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuStrip.SuspendLayout();
             this.Toolstrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -72,7 +73,8 @@ namespace ApplicationDev
             this.MDI_TEST1,
             this.TESTYME,
             this.Fm_item,
-            this.Fm_Cust});
+            this.Fm_Cust,
+            this.FM_user});
             this.M_SYSTEM.Name = "M_SYSTEM";
             this.M_SYSTEM.Size = new System.Drawing.Size(104, 24);
             this.M_SYSTEM.Text = "시스템_관리";
@@ -249,6 +251,12 @@ namespace ApplicationDev
             this.mytabcontrol1.Size = new System.Drawing.Size(817, 286);
             this.mytabcontrol1.TabIndex = 4;
             // 
+            // FM_user
+            // 
+            this.FM_user.Name = "FM_user";
+            this.FM_user.Size = new System.Drawing.Size(187, 26);
+            this.FM_user.Text = "사용자 관리";
+            // 
             // Fm_main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -299,5 +307,6 @@ namespace ApplicationDev
         private mytabcontrol mytabcontrol1;
         private System.Windows.Forms.ToolStripMenuItem Fm_item;
         private System.Windows.Forms.ToolStripMenuItem Fm_Cust;
+        private System.Windows.Forms.ToolStripMenuItem FM_user;
     }
 }

@@ -20,6 +20,7 @@ namespace DEV_Form
         public virtual void Inquire()
         {
             
+                                                                                                                                                                                                           
         }
 
         public virtual void DoNew()
