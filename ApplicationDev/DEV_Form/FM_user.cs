@@ -56,5 +56,22 @@ namespace DEV_Form
                 helper.Close();
             }
         }
+
+        public override void DoNew()
+        {
+            base.DoNew();
+            DataRow dr = ((DataTable)dataGridView1.DataSource).NewRow();
+            ((DataTable)dataGridView1.DataSource).Rows.Add(dr);
+
+        }
+        public override void Delete()
+        {
+            base.Delete();
+            if (dataGridView1.Rows.Count == 0) return;
+            int iSI = dataGridView1.CurrentCell.RowIndex-1;
+            DataTable dttemp = (DataTable)dataGridView1.DataSource;
+            dttemp.Rows[iSI].Delete();
+
+        }
     }
 }
