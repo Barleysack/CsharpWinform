@@ -33,7 +33,7 @@ namespace ApplicationDev
         private void btn_pwreg_Click(object sender, EventArgs e)
         {
             //비밀번호를 변경
-            string strCon = "Data Source = 61.105.9.203; " +
+            string strCon = "Data Source = 222.235.141.8; " +
                 "Initial Catalog = AppDev;" +
                 "User ID=kfqs;Password=1234";
             Connect = new SqlConnection(strCon);

@@ -27,7 +27,7 @@ namespace ApplicationDev
             this.stbInsert.Click += new System.EventHandler(this.stbInsert_Click);
             this.stbDel.Click += new System.EventHandler(this.stbDel_Click);
             this.stbSave.Click += new System.EventHandler(this.stbSave_Click);
-
+            
             //Fm_login login = new();
             //login.ShowDialog(); 
 

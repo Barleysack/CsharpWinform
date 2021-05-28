@@ -2,7 +2,6 @@
 using System.Data;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-using ApplicationDev;
 using System.Drawing;
 using System.IO;
 
@@ -16,7 +15,7 @@ namespace DEV_Form
         }
 
         private SqlConnection connect = null; //접속 정보 객체 명명 
-        string strCon = "Data Source = 61.105.9.203; " +
+        string strCon = "Data Source = 222.235.141.8; " +
                 "Initial Catalog = AppDev;" +
                 "User ID=kfqs1;Password=1234";
         
